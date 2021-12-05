@@ -40,6 +40,12 @@ resource "azurerm_kubernetes_cluster" "aks" {
   identity {
     type = "SystemAssigned"
   }
+  #enable ingress aks cluster
+  addon_profile {
+    http_application_routing {
+      enabled = true
+    }
+  }
 #creating network profile for aks cluster
   network_profile {
     load_balancer_sku = "Standard"
